@@ -1,0 +1,71 @@
+[project]
+name = "boto3-client-cache"
+version = "0.1.0"
+description = "A simple Python package with a cache for boto3 clients. Includes LRU and LFU caching."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "botocore>=1.42.48",
+]
+authors = [
+    {name = "Mike Letts",email = "lettsmt@gmail.com"}
+]
+maintainers = [
+  {name="Mike Letts", email="lettsmt@gmail.com"},
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: System Administrators",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Software Development :: Libraries",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: System :: Systems Administration",
+  "Topic :: Security",
+]
+
+[project.urls]
+Homepage = "https://michaelthomasletts.com/boto3-client-cache"
+Repository = "https://github.com/michaelthomasletts/boto3-client-cache"
+Documentation = "https://michaelthomasletts.com/boto3-client-cache"
+
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build]
+include = ["NOTICE", "LICENSE", "boto3_client_cache/**"]
+
+[tool.ruff]
+line-length = 79
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = true
+
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "INFO"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+log_cli_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+[dependency-groups]
+dev = [
+    "furo>=2025.12.19",
+    "numpydoc>=1.10.0",
+    "pre-commit>=4.5.1",
+    "pytest>=9.0.2",
+    "ruff>=0.15.1",
+    "sphinx>=9.1.0",
+    "tomlkit>=0.14.0",
+]

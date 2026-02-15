@@ -104,7 +104,7 @@ jobs:
         id: release
         uses: googleapis/release-please-action@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
           config-file: configs/release-please-config.json
           manifest-file: configs/.release-please-manifest.json
 
@@ -181,7 +181,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           publish_branch: gh-pages
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_PAT }}
           publish_dir: docs/_build/html
           destination_dir: docs
           enable_jekyll: false

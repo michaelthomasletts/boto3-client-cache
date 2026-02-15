@@ -81,6 +81,7 @@ jobs:
             docs_or_code:
               - "boto3_client_cache/**"
               - "docs/**"
+              - "pyproject.toml"
 
   release:
     name: Release Please and Publish to PyPI

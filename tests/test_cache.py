@@ -118,7 +118,7 @@ def test_client_cache_factory_returns_registered_lru_subclass() -> None:
 
 def test_client_cache_factory_rejects_unsupported_cache_type() -> None:
     with pytest.raises(ClientCacheError, match="Unsupported cache type"):
-        ClientCache("LFU")
+        ClientCache("LFU")  # type: ignore[call-arg]
 
 
 def test_lru_cache_init_max_size_and_resizing_with_eviction() -> None:

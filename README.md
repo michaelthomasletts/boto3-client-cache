@@ -30,13 +30,6 @@
     />
   </a>
 
-  <a href="https://github.com/michaelthomasletts/boto3-client-cache/stargazers">
-    <img 
-      src="https://img.shields.io/github/stars/michaelthomasletts/boto3-client-cache?style=flat&logo=github&labelColor=555&color=FF0000&label=Stars" 
-      alt="stars"
-    />
-  </a>
-
   <a href="https://michaelthomasletts.com/boto3-client-cache">
     <img 
       src="https://img.shields.io/badge/Official%20Documentation-📘-FF0000?style=flat&labelColor=555&logo=readthedocs" 
@@ -71,21 +64,21 @@
 
 ## Description
 
-A simple Python package which caches boto3 clients. 
+boto3-client-cache provides a concurrency-safe, bounded cache for boto3 clients with deterministic identity semantics.
 
-Includes LRU eviction. LFU eviction will be included in a future release.
+LRU eviction is supported. LFU eviction is planned for a future release.
 
-## Raison d'Être
+## Why this Exists
 
-**boto3 clients consume a large amount of memory**. Many developers never notice. *At scale*, however, this becomes painfully obvious. There is a clear incentive, therefore, to avoid initializing duplicate client objects. Client caching is an obvious solution.
+[boto3 clients consume a large amount of memory](https://github.com/boto/boto3/issues/4568). Many developers never notice this. *At scale*, however, the memory footprint of boto3 clients often becomes clear through manifold consequences. Client caching is an obvious choice for managing multiple clients at scale.
 
-The most challenging aspect of boto3 client caching is selecting robust and standardized unique keys. Managing ad-hoc keys at scale is unwieldy and insecure. **boto3-client-cache hashes according to client signatures**. Setting and retrieving clients from the client cache therefore requires an explicit declaration of intention -- that is, *the developer must explicitly pass client initialization parameters to a `CacheKey` object in order to set or retrieve a client*.
+## Design
 
-From a developer experience perspective, this design - that is, forcing `CacheKey` - may feel clunky; however, it ensures setting and retrieving clients are unambiguous operations. Further, locking the client cache, as boto3-client-cache does, prevents race conditions, enabling developers to confidently employ the client cache at scale.
+The most important but challenging design choice for client caching is selecting and enforcing a robust and standardized methodology for unique keys. **boto3-client-cache hashes according to boto3 client signatures**. 
 
-Although boto3-client-cache can help any developer working with the AWS Python SDK at any scale, it was designed primarily for security, cloud, machine learning, and platform teams operating at scale. 
+Setting and retrieving clients from the client cache therefore requires an explicit declaration of intention -- that is, *the developer must explicitly pass client initialization parameters to a `ClientCacheKey` object in order to set or retrieve boto3 clients*. This ensures setting and retrieving clients are *unambiguous and deterministic* operations. By locking the client cache, as boto3-client-cache does, race conditions are prevented, enabling developers to confidently employ the client cache at scale with predictable cache eviction behavior. Lastly, by designing the cache like a dict in the standard Python library, the cache is ergonomically familiar and thus easy to use.
 
-boto3-client-cache, it should be noted, is also a critical dependency for [boto3-refresh-session](https://github.com/michaelthomasletts/boto3-refresh-session).
+These decisions reflect the core design goals of boto3-client-cache: **safety at scale, deterministic behavior, ergonomic interfacing, and explicit identity**.
 
 ## Installation
 
@@ -94,6 +87,8 @@ pip install boto3-client-cache
 ```
 
 ## Quickstart
+
+Refer to the [official documentation](https://michaelthomasletts.com/boto3-client-cache) for additional information.
 
 ```python
 from boto3_client_cache import ClientCache, ClientCacheKey
@@ -108,25 +103,31 @@ kwargs = {"service_name": "s3", "region_name": "us-west-2"}
 # create a cache key using those params
 key = ClientCacheKey(**kwargs)
 
-# make the assignment
+# assign a client
 cache[key] = boto3.client(**kwargs)
 
-# and retrieve the client using the key
+# and retrieve that client using the key
 s3_client = cache[key]
+```
 
-# this raises a ClientCacheExistsError
+## Error Semantics
+
+Refer to the [official documentation](https://michaelthomasletts.com/boto3-client-cache) for additional information.
+
+```python
+# raises ClientCacheExistsError b/c client(**kwargs) already exists
 cache[key] = boto3.client(**kwargs)
 
-# this raises a ClientCacheNotFoundError
+# raises ClientCacheNotFoundError b/c the specific client was not cached
 cache[ClientCacheKey(service_name="ec2", region_name="us-west-2")]
 
-# but this returns None instead of raising ClientCacheNotFoundError
+# returns None instead of raising ClientCacheNotFoundError
 cache.get(ClientCacheKey(service_name="ec2", region_name="us-west-2"))
 
-# this raises a ClientCacheError
+# raises ClientCacheError b/c the key is not a ClientCacheKey
 cache["this is not a ClientCacheKey"]
 
-# and this raises a ClientCacheError
+# raises ClientCacheError b/c the object is not a client
 cache[ClientCacheKey("s3")] = "this is not a boto3 client"
 ```
 

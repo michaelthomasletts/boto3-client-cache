@@ -23,17 +23,17 @@ Quickstart
     # and retrieve the client using the key
     s3_client = cache[key]
 
-    # this raises a ClientCacheExistsError
+    # raises ClientCacheExistsError b/c client(**kwargs) already exists
     cache[key] = boto3.client(**kwargs)
 
-    # this raises a ClientCacheNotFoundError
+    # raises ClientCacheNotFoundError b/c the specific client was not cached
     cache[ClientCacheKey(service_name="ec2", region_name="us-west-2")]
 
-    # but this returns None instead of raising ClientCacheNotFoundError
+    # returns None instead of raising ClientCacheNotFoundError
     cache.get(ClientCacheKey(service_name="ec2", region_name="us-west-2"))
 
-    # this raises a ClientCacheError
+    # raises ClientCacheError b/c the key is not a ClientCacheKey
     cache["this is not a ClientCacheKey"]
 
-    # and this raises a ClientCacheError
+    # raises ClientCacheError b/c the object is not a client
     cache[ClientCacheKey("s3")] = "this is not a boto3 client"

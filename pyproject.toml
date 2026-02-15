@@ -1,12 +1,10 @@
 [project]
 name = "boto3-client-cache"
 version = "0.1.1"
-description = "A simple Python package with a cache for boto3 clients."
+description = "boto3-client-cache provides a concurrency-safe, bounded cache for boto3 clients with deterministic identity semantics."
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = [
-    "botocore",
-]
+dependencies = ["botocore", "boto3"]
 authors = [
     {name = "Mike Letts",email = "lettsmt@gmail.com"}
 ]
@@ -14,7 +12,7 @@ maintainers = [
   {name="Mike Letts", email="lettsmt@gmail.com"},
 ]
 classifiers = [
-  "Development Status :: 3 - Alpha",
+  "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Developers",
   "Intended Audience :: System Administrators",
   "License :: OSI Approved :: Apache Software License",

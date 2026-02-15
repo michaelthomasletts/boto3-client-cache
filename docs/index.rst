@@ -7,7 +7,7 @@ boto3-client-cache
 
 **Author:** `Mike Letts <https://michaelthomasletts.com>`_
 
-**Description:** boto3-client-cache is a simple Python package with a cache for boto3 clients.
+**Description:** A simple Python package which caches boto3 clients.
 
 .. toctree::
    :maxdepth: 1

@@ -6,7 +6,7 @@ Includes LRU eviction. LFU eviction will be included in a future release.
 
 ## Raison d'Être
 
-**boto3 clients consume a large amount of memory**. Many developers never notice. *At scale*, however, this becomes painfully clear. There is an obvious incentive, therefore, to avoid initializing duplicate client objects. Client caching is an obvious solution.
+**boto3 clients consume a large amount of memory**. Many developers never notice. *At scale*, however, this becomes painfully obvious. There is a clear incentive, therefore, to avoid initializing duplicate client objects. Client caching is an obvious solution.
 
 The most challenging aspect of boto3 client caching is selecting robust and standardized unique keys. Managing ad-hoc keys at scale is unwieldy and insecure. **boto3-client-cache hashes according to client signatures**. Setting and retrieving clients from the client cache therefore requires an explicit declaration of intention -- that is, *the developer must explicitly pass client initialization parameters to a `CacheKey` object in order to set or retrieve a client*.
 

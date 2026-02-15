@@ -61,7 +61,7 @@
 
   <a href="https://github.com/michaelthomasletts/boto3-client-cache/blob/main/LICENSE">
     <img 
-      src="https://img.shields.io/static/v1?label=License&message=MPL-2.0&color=FF0000&labelColor=555&logo=github&style=flat"
+      src="https://img.shields.io/static/v1?label=License&message=Apache&color=FF0000&labelColor=555&logo=github&style=flat"
       alt="license"
     />
   </a>

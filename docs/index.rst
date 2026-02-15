@@ -11,7 +11,6 @@ Description
 -----------
 
 boto3-client-cache is a simple Python package which caches boto3 clients. 
-It includes LRU eviction. LFU eviction will be included in a future release.
 
 Raison d'Être
 -------------

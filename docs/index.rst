@@ -30,7 +30,7 @@ Further, locking the client cache, as boto3-client-cache does, prevents race con
 
 Although boto3-client-cache can help any developer working with the AWS Python SDK at any scale, it was designed primarily for security, cloud, machine learning, and platform teams operating at scale. 
 
-boto3-client-cache, it should be noted, is also a critical dependency for [boto3-client-cache](https://github.com/michaelthomasletts/boto3-client-cache).
+boto3-client-cache, it should be noted, is also a critical dependency for `boto3-client-cache <https://github.com/michaelthomasletts/boto3-client-cache>`_.
 
 .. toctree::
    :maxdepth: 1

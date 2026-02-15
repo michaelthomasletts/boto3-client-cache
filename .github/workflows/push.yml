@@ -170,6 +170,9 @@ jobs:
       - name: Build docs
         run: uv run --directory docs make clean html
 
+      - name: Disable Jekyll for built docs directory
+        run: touch docs/_build/html/.nojekyll
+
       - name: Deploy docs to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:

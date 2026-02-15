@@ -2,6 +2,7 @@
 
 * [ ] Did you include the version part parameter (i.e. [fix | feat | BREAKING CHANGE]) to the beginning of the pull request title so that the version is bumped correctly? 
     * Example pull request title: 'fix: Added a new parameter to the `ClientCache` object.'
+    * You can find additional details about version parts [here](https://www.conventionalcommits.org/en/v1.0.0/#summary).
 * [ ] Did you verify that your changes pass pre-commit checks before opening this pull request?
     * The pre-commit checks are identical to required status checks for pull requests in this repository. Know that suppressing pre-commit checks via the `--no-verify` | `-nv` arguments will not help you avoid the PR status checks!
     * To ensure that pre-commit checks work on your branch before running `git commit`, run `pre-commit install` and `pre-commit install-hooks` beforehand. 

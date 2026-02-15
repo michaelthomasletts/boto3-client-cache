@@ -1,7 +1,3 @@
-# Contributing to boto3-client-cache
-
-Thanks for contributing.
-
 ## Development Prerequisites
 
 - Python 3.10+ (CI currently runs on Python 3.10)

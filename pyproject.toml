@@ -39,6 +39,8 @@ keywords = [
     "aws",
     "amazon web services",
     "client cache",
+    "lru cache",
+    "lfu cache",
 ]
 
 [project.urls]

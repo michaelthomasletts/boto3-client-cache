@@ -8,18 +8,18 @@ repos:
     name: ruff
     alias: ruff
     types: [python]
-    entry: make lint
+    entry: uv run ruff check .
     language: system
   - id: ruff-format
     name: ruff-format
     alias: ruff-format
     types: [python]
-    entry: make format
+    entry: uv run ruff format --check .
     language: system
   - id: uv-lock-check
     name: uv-lock-check
     alias: uv-lock-check
-    entry: make lock
+    entry: uv lock --check
     language: system
     pass_filenames: false
     always_run: true
@@ -27,7 +27,7 @@ repos:
     name: pytest
     alias: pytest
     types: [python]
-    entry: make test
+    entry: uv run pytest tests/ -v
     language: system
     always_run: true
     pass_filenames: false

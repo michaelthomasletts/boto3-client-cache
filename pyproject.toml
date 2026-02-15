@@ -30,11 +30,33 @@ classifiers = [
   "Topic :: System :: Systems Administration",
   "Topic :: Security",
 ]
+keywords = [
+    "boto3",
+    "botocore",
+    "cache",
+    "client",
+    "aws",
+    "amazon web services",
+    "client cache",
+]
 
 [project.urls]
 Homepage = "https://michaelthomasletts.com/boto3-client-cache"
 Repository = "https://github.com/michaelthomasletts/boto3-client-cache"
 Documentation = "https://michaelthomasletts.com/boto3-client-cache"
+
+[dependency-groups]
+dev = [
+    "furo",
+    "numpydoc",
+    "pre-commit",
+    "pytest",
+    "ruff",
+    "sphinx",
+    "sphinx-copybutton",
+    "sphinxext-opengraph[social-cards]",
+    "tomlkit",
+]
 
 [build-system]
 requires = ["hatchling>=1.27.0"]
@@ -61,16 +83,3 @@ log_cli = true
 log_cli_level = "INFO"
 log_cli_date_format = "%Y-%m-%d %H:%M:%S"
 log_cli_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-
-[dependency-groups]
-dev = [
-    "furo",
-    "numpydoc",
-    "pre-commit",
-    "pytest",
-    "ruff",
-    "sphinx",
-    "sphinx-copybutton",
-    "sphinxext-opengraph[social-cards]",
-    "tomlkit",
-]

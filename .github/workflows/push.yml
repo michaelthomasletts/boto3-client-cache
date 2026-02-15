@@ -105,7 +105,8 @@ jobs:
         uses: googleapis/release-please-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          release-type: python
+          config-file: configs/release-please-config.json
+          manifest-file: configs/.release-please-manifest.json
 
       - name: Check-Out Repository at Released SHA
         if: steps.release.outputs.release_created == 'true'
@@ -133,9 +134,12 @@ jobs:
 
   docs:
     name: Build and Deploy Docs
-    needs: [checks, changes]
+    needs: [checks, changes, release]
     runs-on: ubuntu-latest
-    if: needs.changes.outputs.docs_or_code == 'true'
+    if: |
+      always() &&
+      needs.changes.outputs.docs_or_code == 'true' &&
+      (needs.release.result == 'success' || needs.release.result == 'skipped')
     permissions:
       contents: write
     steps:

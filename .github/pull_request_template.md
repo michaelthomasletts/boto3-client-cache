@@ -1,8 +1,11 @@
 ## All submissions
 
-* [ ] Did you include the version part parameter (i.e. [fix | feat | BREAKING CHANGE]) to the beginning of the pull request title so that the version is bumped correctly? 
-    * Example pull request title: 'fix: Added a new parameter to the `ClientCache` object.'
-    * You can find additional details about version parts [here](https://www.conventionalcommits.org/en/v1.0.0/#summary).
+* [ ] Does your pull request title follow Conventional Commits (`type(scope)!: summary`)?
+    * Allowed `type` values in this repository: `feat`, `fix`, `perf`, `refactor`, `docs`, `style`, `test`, `build`, `ci`, `chore`, `revert`.
+    * Example pull request title: `fix(cache): add a new parameter to ClientCache`.
+    * For breaking changes in PR titles, use `!` before `:` (example: `feat!: remove deprecated cache API`).
+    * You can find additional details [here](https://www.conventionalcommits.org/en/v1.0.0/#summary).
+    * Release Please uses these commit types to determine release bumps (`feat` -> minor, `fix`/`perf` -> patch, `!` -> major).
 * [ ] Did you verify that your changes pass pre-commit checks before opening this pull request?
     * The pre-commit checks are identical to required status checks for pull requests in this repository. Know that suppressing pre-commit checks via the `--no-verify` | `-nv` arguments will not help you avoid the PR status checks!
     * To ensure that pre-commit checks work on your branch before running `git commit`, run `pre-commit install` and `pre-commit install-hooks` beforehand. 
@@ -15,7 +18,7 @@
 
 * [ ] Does your new feature include documentation? If not, why not?
     * [ ] Does that documentation match the numpydoc guidelines?
-    * [ ] Did you locally test your documentation changes using `uv run bash -lc "cd docs && make clean && make html"` from the root directory?
+    * [ ] Did you locally test your documentation changes using `uv run --directory docs make clean html` from the root directory?
 * [ ] Did you write unit tests for the new feature? If not, why not?
     * [ ] Did the unit tests pass?
 

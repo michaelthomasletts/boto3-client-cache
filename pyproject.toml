@@ -1,6 +1,6 @@
 [project]
 name = "boto3-client-cache"
-version = "0.1.2"
+version = "1.0.0"
 description = "boto3-client-cache provides a concurrency-safe, bounded cache for boto3 clients with deterministic identity semantics."
 readme = "README.md"
 requires-python = ">=3.10"

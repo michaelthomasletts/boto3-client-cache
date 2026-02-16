@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/michaelthomasletts/boto3-client-cache/compare/v0.1.2...v1.0.0) (2026-02-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added LFU eviction + cache_type -> eviction_policy ([#20](https://github.com/michaelthomasletts/boto3-client-cache/issues/20))
+
+### Features
+
+* Added LFU eviction + cache_type -&gt; eviction_policy ([#20](https://github.com/michaelthomasletts/boto3-client-cache/issues/20)) ([c25b333](https://github.com/michaelthomasletts/boto3-client-cache/commit/c25b333726fc3b19d223059c41f146adc15ef3c0))
+
 ## [0.1.2](https://github.com/michaelthomasletts/boto3-client-cache/compare/v0.1.1...v0.1.2) (2026-02-15)
 
 

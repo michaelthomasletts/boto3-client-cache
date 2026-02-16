@@ -750,7 +750,7 @@ class LFUClientCache(
     ``LFUClientCache`` does not support ``fromkeys``, ``update``,
     ``setdefault``, the ``|=`` operator, or the ``|`` operator.
 
-    .. versionadded:: 0.2.0
+    .. versionadded:: 1.0.0
 
     Parameters
     ----------

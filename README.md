@@ -70,7 +70,7 @@ LRU eviction is supported. LFU eviction is planned for a future release.
 
 ## Why this Exists
 
-[boto3 clients consume a large amount of memory](https://github.com/boto/boto3/issues/4568). Many developers never notice this. *At scale*, however, the memory footprint of boto3 clients often becomes clear through manifold consequences. Client caching is an obvious choice for managing multiple clients at scale.
+[boto3 clients consume a large amount of memory](https://github.com/boto/boto3/issues/4568). Many developers never notice this. *At scale*, however, the memory footprint of boto3 clients often becomes clear through manifold consequences. Client caching is an obvious choice for managing multiple clients at scale. There are, to my knowledge, no other open-source tools available which do what boto3-client-cache does.
 
 ## Design
 

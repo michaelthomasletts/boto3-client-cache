@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/michaelthomasletts/boto3-client-cache/compare/v1.0.0...v1.0.1) (2026-02-16)
+
+
+### Bug Fixes
+
+* Fixing incorrect version-added value for LFUClientCache doc. ([c6c85ef](https://github.com/michaelthomasletts/boto3-client-cache/commit/c6c85ef40bc5ef4e7859e1cdf51d6881165441f3))
+* Fixing incorrect version-added value for LFUClientCache doc. ([#22](https://github.com/michaelthomasletts/boto3-client-cache/issues/22)) ([cf7a716](https://github.com/michaelthomasletts/boto3-client-cache/commit/cf7a716e413d6f2c0ac7878bdc94812fbfdf0a27))
+
 ## [1.0.0](https://github.com/michaelthomasletts/boto3-client-cache/compare/v0.1.2...v1.0.0) (2026-02-16)
 
 

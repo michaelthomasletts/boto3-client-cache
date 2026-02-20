@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/michaelthomasletts/boto3-client-cache/compare/v1.0.1...v2.0.0) (2026-02-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* Adding boto3 resource support and sensitive data masking into boto3-client-cache ([#24](https://github.com/michaelthomasletts/boto3-client-cache/issues/24))
+
+### Features
+
+* Adding boto3 resource support and sensitive data masking into boto3-client-cache ([#24](https://github.com/michaelthomasletts/boto3-client-cache/issues/24)) ([ef836c8](https://github.com/michaelthomasletts/boto3-client-cache/commit/ef836c865774629f577c9fee2c6d49bf1c1e76e9))
+
 ## [1.0.1](https://github.com/michaelthomasletts/boto3-client-cache/compare/v1.0.0...v1.0.1) (2026-02-16)
 
 

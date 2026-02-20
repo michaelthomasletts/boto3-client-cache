@@ -72,7 +72,7 @@ LRU and LFU eviction are supported.
 
 [boto3 clients and resources consume a large amount of memory](https://github.com/boto/boto3/issues/4568). Many developers never notice this. *At scale*, however, the memory footprint of boto3 clients and resources often becomes clear through manifold consequences. Caching is an obvious choice for managing multiple clients and-or resources at scale. 
 
-boto3 does not cache client or resource objects natively. There are also, to my knowledge, no other open-source tools available which do what boto3-client-cache does. To compensate, bespoke caching solutions [circulate online](https://github.com/boto/boto3/issues/443). boto3-client-cache exists to standardize and democratize client and resource caching for the Python AWS community.
+boto3 does not cache client or resource objects natively. There are also, to my knowledge, no other open-source tools available which do what boto3-client-cache does. To compensate, bespoke caching solutions [circulate online](https://github.com/boto/boto3/issues/1670). boto3-client-cache exists to standardize and democratize client and resource caching for the Python AWS community.
 
 ## Design
 

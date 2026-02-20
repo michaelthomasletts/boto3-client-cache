@@ -24,7 +24,7 @@ Caching is an obvious choice for managing multiple clients and-or resources at s
 
 boto3 does not cache client or resource objects natively. 
 There are also, to my knowledge, no other open-source tools available which do what boto3-client-cache does.
-To compensate, bespoke caching solutions `circulate online <https://github.com/boto/boto3/issues/443>`_.
+To compensate, bespoke caching solutions `circulate online <https://github.com/boto/boto3/issues/1670>`_.
 boto3-client-cache exists to standardize and democratize client and resource caching for the Python AWS community.
 
 Design

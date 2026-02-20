@@ -110,6 +110,67 @@ def test_client_cache_key_config_falls_back_to___dict__when_needed() -> None:
     assert "region_name='us-east-1'" in formatted
 
 
+@pytest.mark.parametrize(
+    ("sensitive_key", "value"),
+    [
+        ("aws_access_key_id", "AKIA_TEST_KEY"),
+        ("aws_secret_access_key", "SECRET_TEST_KEY"),
+        ("aws_session_token", "SESSION_TEST_TOKEN"),
+    ],
+)
+def test_client_cache_key_obscures_sensitive_keyword_values(
+    sensitive_key: str,
+    value: str,
+) -> None:
+    key = ClientCacheKey(
+        "s3", region_name="us-east-1", **{sensitive_key: value}
+    )
+
+    assert f"{sensitive_key}=***" in key.label
+    assert value not in key.label
+    assert f"{sensitive_key}={value!r}" in key._label
+
+    public_kwargs = dict(key.key[1])
+    private_kwargs = dict(key._key[1])
+
+    assert public_kwargs[sensitive_key] == "***"
+    assert private_kwargs[sensitive_key] == value
+    assert public_kwargs["region_name"] == "us-east-1"
+    assert private_kwargs["region_name"] == "us-east-1"
+
+
+@pytest.mark.parametrize(
+    ("arg_position", "value"),
+    [
+        (6, "AKIA_TEST_KEY"),
+        (7, "SECRET_TEST_KEY"),
+        (8, "SESSION_TEST_TOKEN"),
+    ],
+)
+def test_client_cache_key_obscures_sensitive_positional_values(
+    arg_position: int,
+    value: str,
+) -> None:
+    args: list[object | None] = [
+        "s3",
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+        None,
+    ]
+    args[arg_position] = value
+    key = ClientCacheKey(*args)
+
+    assert value not in key.label
+    assert value in key._label
+    assert key.key[0][arg_position] == "***"
+    assert key._key[0][arg_position] == value
+
+
 def test_client_cache_factory_returns_registered_lru_subclass() -> None:
     cache = ClientCache()
 

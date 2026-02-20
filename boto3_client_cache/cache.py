@@ -19,10 +19,12 @@ __all__ = [
 from abc import ABC, abstractmethod
 from collections import OrderedDict
 from collections.abc import Iterator
+from inspect import signature
 from threading import RLock
 from typing import Any, Generic, Literal, Tuple, TypeVar, get_args
 
 from boto3.resources.base import ServiceResource
+from boto3.session import Session
 from botocore.client import BaseClient
 from botocore.config import Config
 
@@ -80,7 +82,7 @@ class _AbstractCacheKey(ABC):
         return value
 
     def __hash__(self) -> int:
-        return hash(self.key)
+        return hash(self._key)
 
     @abstractmethod
     def __eq__(self, other: object) -> bool: ...
@@ -96,8 +98,33 @@ class _AbstractCacheKey(ABC):
             Keyword arguments used to create the cache key.
         """
 
-        # creating a readable label for debugging purposes
-        self.label: str = ", ".join(
+        # defining keys which may contain sensitive information to be obscured
+        sensitive_keys = (
+            "aws_access_key_id",
+            "aws_secret_access_key",
+            "aws_session_token",
+        )
+
+        # inferring positions of args which may contain sensitive info
+        # based on the public function signature (excluding ``self``)
+        method = (
+            Session.client if self.cache_type == "client" else Session.resource
+        )
+
+        # filtering out "self" from the parameter names
+        parameter_names = tuple(
+            name for name in signature(method).parameters if name != "self"
+        )
+
+        # determining the positions of sensitive args based on keywords
+        sensitive_arg_positions = tuple(
+            i
+            for i, name in enumerate(parameter_names)
+            if name in sensitive_keys
+        )
+
+        # creating a private clear-text label
+        self._label: str = ", ".join(
             [
                 *(repr(a) for a in args),
                 *(
@@ -107,8 +134,37 @@ class _AbstractCacheKey(ABC):
             ]
         )
 
+        # creating a public label with sensitive information obscured
+        self.label: str = ", ".join(
+            [
+                *(
+                    repr(a)
+                    if i not in sensitive_arg_positions
+                    else repr("***")
+                    for i, a in enumerate(args)
+                ),
+                *(
+                    f"{k}={self._format_label_value(v)}"
+                    if k not in sensitive_keys
+                    else f"{k}=***"
+                    for k, v in sorted(kwargs.items())
+                ),
+            ]
+        )
+
         # checking if Config was passed as a positional arg
+        # also preemptively obscuring args which may contain sensitive info
         _args = [
+            self._config_cache_key(arg)
+            if isinstance(arg, Config)
+            else "***"
+            if i in sensitive_arg_positions
+            else arg
+            for i, arg in enumerate(args)
+        ]
+
+        # checking if Config was passed as a positional arg
+        _clear_args = [
             self._config_cache_key(arg) if isinstance(arg, Config) else arg
             for arg in args
         ]
@@ -118,18 +174,43 @@ class _AbstractCacheKey(ABC):
             _args.pop()
         _args = tuple(_args)
 
+        # popping trailing None values from _clear_args
+        # but preserving None in middle
+        while _clear_args and _clear_args[-1] is None:
+            _clear_args.pop()
+        _clear_args = tuple(_clear_args)
+
         # checking if Config was passed as a keyword arg
         _kwargs = kwargs.copy()
         if _kwargs.get("config") is not None:
             _kwargs["config"] = self._config_cache_key(_kwargs["config"])
 
+        # checking if Config was passed as a keyword arg
+        _clear_kwargs = kwargs.copy()
+        if _clear_kwargs.get("config") is not None:
+            _clear_kwargs["config"] = self._config_cache_key(
+                _clear_kwargs["config"]
+            )
+
         # preemptively removing None values from kwargs
+        # also obscuring kwarg values which may contain sensitive info
         _kwargs = {
-            key: value for key, value in _kwargs.items() if value is not None
+            key: value if key not in sensitive_keys else "***"
+            for key, value in _kwargs.items()
+            if value is not None
         }
 
-        # creating a unique key for the client cache
+        _clear_kwargs = {
+            key: value
+            for key, value in _clear_kwargs.items()
+            if value is not None
+        }
+
+        # creating a public unique key for the client cache
         self.key = (_args, tuple(sorted(_kwargs.items())))
+
+        # creating a private clear-text key for equality checks and hashing
+        self._key = (_clear_args, tuple(sorted(_clear_kwargs.items())))
 
     def _freeze_value(self, value: Any) -> Any:
         """Recursively freezes a value for use in cache keys.
@@ -262,7 +343,7 @@ class ClientCacheKey(_AbstractCacheKey):
         super().__init__("client", *args, **kwargs)
 
     def __eq__(self, other: object) -> bool:
-        return isinstance(other, ClientCacheKey) and self.key == other.key
+        return isinstance(other, ClientCacheKey) and self._key == other._key
 
     # inheriting the hash implementation from _AbstractCacheKey
     __hash__ = _AbstractCacheKey.__hash__
@@ -305,7 +386,7 @@ class ResourceCacheKey(_AbstractCacheKey):
         super().__init__("resource", *args, **kwargs)
 
     def __eq__(self, other: object) -> bool:
-        return isinstance(other, ResourceCacheKey) and self.key == other.key
+        return isinstance(other, ResourceCacheKey) and self._key == other._key
 
     # inheriting the hash implementation from _AbstractCacheKey
     __hash__ = _AbstractCacheKey.__hash__

@@ -8,7 +8,11 @@ boto3\_client\_cache.exceptions
 
    .. autosummary::
    
+      CacheError
       ClientCacheError
       ClientCacheExistsError
       ClientCacheNotFoundError
+      ResourceCacheError
+      ResourceCacheExistsError
+      ResourceCacheNotFoundError
    

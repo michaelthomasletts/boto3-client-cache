@@ -1,18 +1,22 @@
 """Custom exceptions and warning types for boto3-client-cache."""
 
 __all__ = [
+    "CacheError",
     "ClientCacheError",
     "ClientCacheExistsError",
     "ClientCacheNotFoundError",
+    "ResourceCacheError",
+    "ResourceCacheExistsError",
+    "ResourceCacheNotFoundError",
 ]
 
 from typing import Any, Dict
 
 
-class ClientCacheError(Exception):
+class CacheError(Exception):
     """The base exception for boto3-client-cache.
 
-    .. versionadded:: 0.1.0
+    .. versionadded:: 2.0.0
 
     Parameters
     ----------
@@ -82,6 +86,13 @@ class ClientCacheError(Exception):
         return f"{self.__class__.__name__}({', '.join(args)})"
 
 
+class ClientCacheError(CacheError):
+    """The base exception for boto3-client-cache client cache errors.
+
+    .. versionadded:: 0.1.0
+    """
+
+
 class ClientCacheExistsError(ClientCacheError):
     """Raised when attempting to add a client to the cache that already
     exists.
@@ -94,4 +105,26 @@ class ClientCacheNotFoundError(ClientCacheError):
     """Raised when a client is not found in the cache.
 
     .. versionadded:: 0.1.0
+    """
+
+
+class ResourceCacheError(CacheError):
+    """The base exception for boto3-client-cache resource cache errors.
+
+    .. versionadded:: 2.0.0
+    """
+
+
+class ResourceCacheExistsError(ResourceCacheError):
+    """Raised when attempting to add a resource to the cache that already
+    exists.
+
+    .. versionadded:: 2.0.0
+    """
+
+
+class ResourceCacheNotFoundError(ResourceCacheError):
+    """Raised when a resource is not found in the cache.
+
+    .. versionadded:: 2.0.0
     """

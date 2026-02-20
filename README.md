@@ -64,19 +64,21 @@
 
 ## Description
 
-boto3-client-cache provides a concurrency-safe, bounded cache for boto3 clients with deterministic identity semantics.
+boto3-client-cache provides a concurrency-safe, bounded cache for boto3 client and resource objects with deterministic identity semantics. 
 
 LRU and LFU eviction are supported.
 
 ## Why this Exists
 
-[boto3 clients consume a large amount of memory](https://github.com/boto/boto3/issues/4568). Many developers never notice this. *At scale*, however, the memory footprint of boto3 clients often becomes clear through manifold consequences. Client caching is an obvious choice for managing multiple clients at scale. There are, to my knowledge, no other open-source tools available which do what boto3-client-cache does.
+[boto3 clients and resources consume a large amount of memory](https://github.com/boto/boto3/issues/4568). Many developers never notice this. *At scale*, however, the memory footprint of boto3 clients and resources often becomes clear through manifold consequences. Caching is an obvious choice for managing multiple clients and-or resources at scale. 
+
+boto3 does not cache client or resource objects natively. There are also, to my knowledge, no other open-source tools available which do what boto3-client-cache does. To compensate, bespoke caching solutions [circulate online](https://github.com/boto/boto3/issues/1670). boto3-client-cache exists to standardize and democratize client and resource caching for the Python AWS community.
 
 ## Design
 
-The most important but challenging design choice for client caching is selecting and enforcing a robust and standardized methodology for unique keys. **boto3-client-cache hashes according to boto3 client signatures**. 
+The most important but challenging design choice for client and resource caching is selecting and enforcing a robust and standardized methodology for unique keys. **boto3-client-cache hashes according to boto3 client and resource signatures**. 
 
-Setting and retrieving clients from the client cache therefore requires an explicit declaration of intention -- that is, *the developer must explicitly pass client initialization parameters to a `ClientCacheKey` object in order to set or retrieve boto3 clients*. This ensures setting and retrieving clients are *unambiguous and deterministic* operations. By locking the client cache, as boto3-client-cache does, race conditions are prevented, enabling developers to confidently employ the client cache at scale with predictable cache eviction behavior. Lastly, by designing the cache like a dict in the standard Python library, the cache is ergonomically familiar and thus easy to use.
+Setting and retrieving clients and resources from the client cache therefore requires an explicit declaration of intention -- that is, *the developer must explicitly pass client and resource initialization parameters to a `ClientCacheKey` or `ResourceCacheKey` object in order to set or retrieve boto3 clients*. This ensures setting and retrieving clients and resources are *unambiguous and deterministic* operations. By locking the cache, as boto3-client-cache does, race conditions are prevented, enabling developers to confidently employ the cache at scale with predictable cache eviction behavior. Lastly, by designing the cache like a dict in the standard Python library, the cache is ergonomically familiar and thus easy to use.
 
 These decisions reflect the core design goals of boto3-client-cache: **safety at scale, deterministic behavior, ergonomic interfacing, and explicit identity**.
 
@@ -88,7 +90,7 @@ pip install boto3-client-cache
 
 ## Quickstart
 
-Refer to the [official documentation](https://michaelthomasletts.com/boto3-client-cache) for additional information.
+Refer to the [official documentation](https://michaelthomasletts.com/boto3-client-cache/quickstart.html) for additional information.
 
 ```python
 from boto3_client_cache import ClientCache, ClientCacheKey
@@ -112,7 +114,7 @@ s3_client = cache[key]
 
 ## Error Semantics
 
-Refer to the [official documentation](https://michaelthomasletts.com/boto3-client-cache) for additional information.
+Refer to the [official documentation](https://michaelthomasletts.com/boto3-client-cache/quickstart.html) for additional information.
 
 ```python
 # raises ClientCacheExistsError b/c client(**kwargs) already exists

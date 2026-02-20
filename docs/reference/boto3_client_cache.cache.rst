@@ -8,6 +8,7 @@ boto3\_client\_cache.cache
 
    .. autosummary::
    
+      EvictionPolicy
       CacheType
    
    .. rubric:: Classes
@@ -17,5 +18,9 @@ boto3\_client\_cache.cache
       ClientCache
       ClientCacheKey
       LFUClientCache
+      LFUResourceCache
       LRUClientCache
+      LRUResourceCache
+      ResourceCache
+      ResourceCacheKey
    

@@ -1,4 +1,4 @@
-"""Module for caching boto3 clients based on their initialization
+"""Low-level module for caching boto3 clients based on their initialization
 parameters."""
 
 from __future__ import annotations
@@ -97,6 +97,16 @@ class _AbstractCacheKey(ABC):
         **kwargs : Any, optional
             Keyword arguments used to create the cache key.
         """
+
+        # immediately moving "service_name" into args if present in kwargs
+        if "service_name" in kwargs:
+            args = (kwargs.pop("service_name"),) + args
+
+        # removing eviction_policy and max_size from kwargs if present
+        if "eviction_policy" in kwargs:
+            kwargs.pop("eviction_policy")
+        if "max_size" in kwargs:
+            kwargs.pop("max_size")
 
         # defining keys which may contain sensitive information to be obscured
         sensitive_keys = (
@@ -1498,8 +1508,11 @@ class ClientCache:
     """
 
     def __new__(
-        cls, eviction_policy: EvictionPolicy = "LRU", *args, **kwargs
+        cls, eviction_policy: EvictionPolicy | None = None, *args, **kwargs
     ) -> LRUClientCache | LFUClientCache:
+        # default to LRU if eviction_policy is None or empty string
+        eviction_policy = eviction_policy or "LRU"
+
         if (
             eviction_policy not in _ClientCacheRegistry.registry
             or not isinstance(eviction_policy, str)
@@ -1572,8 +1585,11 @@ class ResourceCache:
     """
 
     def __new__(
-        cls, eviction_policy: EvictionPolicy = "LRU", *args, **kwargs
+        cls, eviction_policy: EvictionPolicy | None = None, *args, **kwargs
     ) -> LRUResourceCache | LFUResourceCache:
+        # default to LRU if eviction_policy is None or empty string
+        eviction_policy = eviction_policy or "LRU"
+
         if (
             eviction_policy not in _ResourceCacheRegistry.registry
             or not isinstance(eviction_policy, str)

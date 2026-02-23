@@ -23,10 +23,6 @@ copyright = f"{date.today().year}, {author}"
 release = str(pyproject["project"]["version"])  # type: ignore
 source_encoding = "utf-8"
 source_suffix = ".rst"
-
-# -- General configuration ---------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
-
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
@@ -35,7 +31,6 @@ extensions = [
     "sphinx_copybutton",
     "sphinxext.opengraph",
 ]
-
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
@@ -82,6 +77,15 @@ numpydoc_class_members_toctree = False
 # napoleon config
 napoleon_numpy_docstring = True
 napoleon_include_init_with_doc = False
+
+# intersphinx
+intersphinx_mapping = {
+    "boto3": (
+        "https://boto3.amazonaws.com/v1/documentation/api/latest/",
+        None,
+    ),
+    "python": ("https://docs.python.org/3", None),
+}
 
 
 def linkcode_resolve(domain, info) -> str | None:

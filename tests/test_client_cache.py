@@ -64,6 +64,46 @@ def test_client_cache_key_normalizes_none_and_sorts_kwargs() -> None:
     assert key.key == (("s3",), (("region_name", "us-east-1"),))
 
 
+def test_client_cache_key_moves_service_name_kwarg_into_args() -> None:
+    positional = ClientCacheKey("s3", region_name="us-east-1")
+    keyword = ClientCacheKey(service_name="s3", region_name="us-east-1")
+
+    assert keyword == positional
+    assert hash(keyword) == hash(positional)
+    assert keyword.key == positional.key
+    assert keyword._key == positional._key
+    assert keyword.label == positional.label
+    assert keyword._label == positional._label
+    assert "service_name=" not in keyword.label
+    assert "service_name=" not in keyword._label
+    assert "service_name" not in dict(keyword.key[1])
+    assert "service_name" not in dict(keyword._key[1])
+
+
+def test_client_cache_key_removes_session_cache_control_kwargs() -> None:
+    plain = ClientCacheKey("s3", region_name="us-east-1")
+    with_controls = ClientCacheKey(
+        "s3",
+        region_name="us-east-1",
+        eviction_policy="LFU",
+        max_size=123,
+    )
+
+    assert with_controls == plain
+    assert with_controls.key == plain.key
+    assert with_controls._key == plain._key
+    assert with_controls.label == plain.label
+    assert with_controls._label == plain._label
+    assert "eviction_policy=" not in with_controls.label
+    assert "eviction_policy=" not in with_controls._label
+    assert "max_size=" not in with_controls.label
+    assert "max_size=" not in with_controls._label
+    assert "eviction_policy" not in dict(with_controls.key[1])
+    assert "eviction_policy" not in dict(with_controls._key[1])
+    assert "max_size" not in dict(with_controls.key[1])
+    assert "max_size" not in dict(with_controls._key[1])
+
+
 def test_client_cache_key_freezes_nested_values() -> None:
     key = ClientCacheKey()
     frozen = key._freeze_value(

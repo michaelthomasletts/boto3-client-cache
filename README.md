@@ -68,7 +68,7 @@ boto3-client-cache provides a concurrency-safe, bounded cache for boto3 client a
 
 LRU and LFU eviction are supported.
 
-## Why this Exists
+## Why this exists
 
 [boto3 clients and resources consume a large amount of memory](https://github.com/boto/boto3/issues/4568). Many developers never notice this. *At scale*, however, the memory footprint of boto3 clients and resources often becomes clear through manifold consequences. Caching is an obvious choice for managing multiple clients and-or resources at scale. 
 
@@ -88,9 +88,36 @@ These decisions reflect the core design goals of boto3-client-cache: **safety at
 pip install boto3-client-cache
 ```
 
-## Quickstart
+## High-level API
 
-Refer to the [official documentation](https://michaelthomasletts.com/boto3-client-cache/quickstart.html) for additional information.
+The high-level API is ergonomically identical to boto3's API, but with caching capabilities built in.
+
+To use it, you can initialize a client or resource which is automatically cached.
+
+```python
+from boto3_client_cache import client
+
+# you can specify eviction_policy and max_size by passing them as args
+# here, they are excluded so the defaults (eviction_policy="LRU", max_size=10) are used
+s3 = client("s3", region_name="us-west-2")
+s3_again = client("s3", region_name="us-west-2")
+assert s3 is s3_again  # True
+```
+
+Or initialize a client or resource from a session directly.
+
+```python
+from boto3_client_cache import Session
+
+session = Session(profile_name="default")
+s3 = session.client("s3")
+s3_again = session.client("s3")
+assert s3 is s3_again  # True
+```
+
+## Low-level API
+
+The low-level API offers more control and flexibility, allowing you to manage multiple caches with different eviction policies and configurations. The low-level API must be used in tandem with `boto3`.
 
 ```python
 from boto3_client_cache import ClientCache, ClientCacheKey
@@ -112,9 +139,9 @@ cache[key] = boto3.client(**kwargs)
 s3_client = cache[key]
 ```
 
-## Error Semantics
+## Error semantics
 
-Refer to the [official documentation](https://michaelthomasletts.com/boto3-client-cache/quickstart.html) for additional information.
+Errors for resources are identical to errors for clients, except that the word "Client" is replaced with "Resource" in the exception name.
 
 ```python
 # raises ClientCacheExistsError b/c client(**kwargs) already exists
@@ -141,7 +168,7 @@ boto3-client-cache is licensed by the [Apache Software License (2.0)](https://gi
 
 Refer to the [contributing guidelines](https://github.com/michaelthomasletts/boto3-client-cache?tab=contributing-ov-file) for additional information on how to contribute to boto3-client-cache.
 
-## Special Thanks
+## Special thanks
 
 - [Patrick Sanders](https://github.com/patricksanders)
 - [Ben Kehoe](https://github.com/benkehoe)

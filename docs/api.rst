@@ -27,3 +27,4 @@ available exceptions.
 
    boto3_client_cache.cache
    boto3_client_cache.exceptions
+   boto3_client_cache.session

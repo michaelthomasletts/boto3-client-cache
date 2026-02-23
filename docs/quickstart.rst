@@ -3,10 +3,44 @@
 Quickstart
 ==========
 
-The following examples demonstrate how to use the client and resource caches with both LRU and LFU eviction policies, as well as how to handle and anticipate common exceptions.
+The following examples demonstrate how to use the high-level and low-level APIs for client and resource caching with both LRU and LFU eviction policies, as well as how to handle and anticipate common exceptions.
+
+High-level API
+--------------
+
+The high-level API is ergonomically identical to boto3's API, but with caching capabilities built in.
+
+To use it, you can initialize a client or resource which is automatically cached.
+
+.. code-block:: python
+
+    from boto3_client_cache import client
+
+    # you can specify eviction_policy and max_size by passing them as args
+    # here, they are excluded so the defaults (eviction_policy="LRU", max_size=10) are used
+    s3 = client("s3", region_name="us-west-2")
+    s3_again = client("s3", region_name="us-west-2")
+    assert s3 is s3_again
+
+Or initialize a client or resource from a session directly.
+
+.. code-block:: python
+
+    from boto3_client_cache import Session
+
+    session = Session(profile_name="default")
+    s3 = session.client("s3")
+    s3_again = session.client("s3")
+    assert s3 is s3_again
+
+Low-level API
+-------------
+
+The low-level API offers more control and flexibility, allowing you to manage multiple caches with different eviction policies and configurations. 
+The low-level API must be used in tandem with `boto3`.
 
 LRU cache for boto3 clients
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Initialize an LRU client cache, set a client in the cache, and retrieve it using the same key.
 
@@ -23,7 +57,7 @@ Initialize an LRU client cache, set a client in the cache, and retrieve it using
     s3_client = cache[key]
 
 LRU cache for boto3 resources
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Initialize an LRU resource cache, set a resource in the cache, and retrieve it using the same key.
 
@@ -40,7 +74,7 @@ Initialize an LRU resource cache, set a resource in the cache, and retrieve it u
     s3_resource = cache[key]
 
 LFU cache for boto3 clients
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Initialize an LFU client cache, set a client in the cache, and retrieve it using the same key.
 
@@ -57,7 +91,7 @@ Initialize an LFU client cache, set a client in the cache, and retrieve it using
     s3_client = cache[key]
 
 LFU cache for boto3 resources
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Initialize an LFU resource cache, set a resource in the cache, and retrieve it using the same key.
 

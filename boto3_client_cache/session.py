@@ -59,6 +59,8 @@ from .exceptions import ClientCacheError, ResourceCacheError
 class SessionClientCache:
     """Class representing the client cache for a session, which contains
     separate caches for different eviction policies (LRU and LFU).
+
+    .. versionadded:: 2.1.0
     """
 
     def __init__(self) -> None:
@@ -72,6 +74,8 @@ class SessionClientCache:
 class SessionResourceCache:
     """Class representing the resource cache for a session, which contains
     separate caches for different eviction policies (LRU and LFU).
+
+    .. versionadded:: 2.1.0
     """
 
     def __init__(self) -> None:
@@ -85,6 +89,8 @@ class SessionResourceCache:
 class SessionCache:
     """Class representing the cache for a session, which contains separate
     client and resource caches for different eviction policies.
+
+    .. versionadded:: 2.1.0
     """
 
     def __init__(self) -> None:
@@ -98,6 +104,8 @@ class SessionCache:
 class Session(boto3.Session):
     """A subclass of :class:`boto3.session.Session` which implements automatic
     caching for clients and resources.
+
+    .. versionadded:: 2.1.0
 
     Parameters
     ----------
@@ -161,6 +169,8 @@ class Session(boto3.Session):
     ) -> BaseClient:
         """Returns a cached client from the default session if it exists,
         otherwise creates a new client and caches it.
+
+        .. versionadded:: 2.1.0
 
         Parameters
         ----------
@@ -251,6 +261,8 @@ class Session(boto3.Session):
     ) -> ServiceResource:
         """Returns a cached resource from the default session if it exists,
         otherwise creates a new resource and caches it.
+
+        .. versionadded:: 2.1.0
 
         Parameters
         ----------
@@ -344,6 +356,8 @@ class Session(boto3.Session):
 def setup_default_session(**kwargs) -> Session:
     """Sets up the default session with caching capabilities.
 
+    .. versionadded:: 2.1.0
+
     Parameters
     ----------
     **kwargs
@@ -374,6 +388,8 @@ def client(
 ) -> BaseClient:
     """Returns a cached client from the default session if it exists,
     otherwise creates a new client and caches it.
+
+    .. versionadded:: 2.1.0
 
     Parameters
     ----------
@@ -436,6 +452,8 @@ def resource(
 ) -> ServiceResource:
     """Returns a cached resource from the default session if it exists,
     otherwise creates a new resource and caches it.
+
+    .. versionadded:: 2.1.0
 
     Parameters
     ----------

@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.4](https://github.com/michaelthomasletts/boto3-client-cache/compare/v2.1.3...v2.1.4) (2026-02-23)
+
+
+### Bug Fixes
+
+* Updating README with license + docs license update ([770058d](https://github.com/michaelthomasletts/boto3-client-cache/commit/770058d4564117fba9a457f499d37000b88b0a64))
+* Updating README with license + docs license update ([#34](https://github.com/michaelthomasletts/boto3-client-cache/issues/34)) ([bac4a9a](https://github.com/michaelthomasletts/boto3-client-cache/commit/bac4a9a8e6295f1612ded4f212f0baf173609f4e))
+
 ## [2.1.3](https://github.com/michaelthomasletts/boto3-client-cache/compare/v2.1.2...v2.1.3) (2026-02-23)
 
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.2](https://github.com/michaelthomasletts/boto3-client-cache/compare/v2.1.1...v2.1.2) (2026-02-23)
+
+
+### Bug Fixes
+
+* Adding versionadded to docstrings in session.py ([1a52de7](https://github.com/michaelthomasletts/boto3-client-cache/commit/1a52de7b1a7d3931a96d49d851b11a6b26e74405))
+* Adding versionadded to docstrings in session.py ([#30](https://github.com/michaelthomasletts/boto3-client-cache/issues/30)) ([8af1117](https://github.com/michaelthomasletts/boto3-client-cache/commit/8af111745a6448c891698cc98c4df10b6e3f5ab2))
+
 ## [2.1.1](https://github.com/michaelthomasletts/boto3-client-cache/compare/v2.1.0...v2.1.1) (2026-02-23)
 
 

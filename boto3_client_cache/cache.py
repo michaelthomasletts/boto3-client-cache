@@ -1,4 +1,4 @@
-"""Low-level module for caching boto3 clients based on their initialization
+"""Low-level API for caching boto3 clients based on their initialization
 parameters."""
 
 from __future__ import annotations

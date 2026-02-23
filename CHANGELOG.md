@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.1](https://github.com/michaelthomasletts/boto3-client-cache/compare/v2.1.0...v2.1.1) (2026-02-23)
+
+
+### Bug Fixes
+
+* Adding intersphinx extension ([d87b1b8](https://github.com/michaelthomasletts/boto3-client-cache/commit/d87b1b8b15a11f3407c640477861f5c634fd3d01))
+* Adding intersphinx extension ([#28](https://github.com/michaelthomasletts/boto3-client-cache/issues/28)) ([c982cff](https://github.com/michaelthomasletts/boto3-client-cache/commit/c982cffa4eea8e7ef55884102dd2a8e625f936f3))
+
 ## [2.1.0](https://github.com/michaelthomasletts/boto3-client-cache/compare/v2.0.0...v2.1.0) (2026-02-23)
 
 

@@ -164,6 +164,8 @@ cache[ClientCacheKey("s3")] = "this is not a boto3 client"
 
 boto3-client-cache is licensed by the [Apache Software License (2.0)](https://github.com/michaelthomasletts/boto3-client-cache/blob/main/LICENSE).
 
+Beginning v2.1.3, boto3-client-cache is licensed under the [Mozilla Public License 2.0 (MPL-2.0)](https://github.com/michaelthomasletts/boto3-client-cache/blob/main/LICENSE). Earlier versions remain licensed under the Apache Software License 2.0.
+
 ## Contributing
 
 Refer to the [contributing guidelines](https://github.com/michaelthomasletts/boto3-client-cache?tab=contributing-ov-file) for additional information on how to contribute to boto3-client-cache.

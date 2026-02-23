@@ -1,5 +1,5 @@
-"""Module which provides a subclass of :class:`boto3.session.Session` that
-implements automatic caching for clients and resources. It also provides
+"""High-level API which provides a subclass of :class:`boto3.session.Session`
+that implements automatic caching for clients and resources. It also provides
 functions to set up the default session with caching capabilities.
 
 Examples

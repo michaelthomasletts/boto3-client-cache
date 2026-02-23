@@ -102,9 +102,13 @@ class Session(boto3.Session):
     Parameters
     ----------
     *args
-        Positional arguments to be passed to the parent class.
+        Positional arguments to be passed to the parent class. Refer to the
+        :class:`boto3.session.Session` documentation for more details on accepted
+        arguments.
     **kwargs
-        Keyword arguments to be passed to the parent class.
+        Keyword arguments to be passed to the parent class. Refer to the
+        :class:`boto3.session.Session` documentation for more details on accepted
+        arguments.
 
     Attributes
     ----------
@@ -170,11 +174,11 @@ class Session(boto3.Session):
             None.
         *args
             Positional arguments to be passed to the default session's client
-            method. Check :func:`boto3.session.Session.client` for more details
+            method. Check :meth:`boto3.session.Session.client` for more details
             on accepted arguments.
         **kwargs
             Keyword arguments to be passed to the default session's client
-            method. Check :func:`boto3.session.Session.client` for more details
+            method. Check :meth:`boto3.session.Session.client` for more details
             on accepted arguments.
 
         Returns
@@ -260,11 +264,11 @@ class Session(boto3.Session):
             None.
         *args
             Positional arguments to be passed to the default session's resource
-            method. Check :func:`boto3.session.Session.resource` for more
+            method. Check :meth:`boto3.session.Session.resource` for more
             details on accepted arguments.
         **kwargs
             Keyword arguments to be passed to the default session's resource
-            method. Check :func:`boto3.session.Session.resource` for more
+            method. Check :meth:`boto3.session.Session.resource` for more
             details on accepted arguments.
 
         Returns
@@ -383,11 +387,11 @@ def client(
         None.
     *args
         Positional arguments to be passed to the default session's client
-        method. Check :func:`boto3.session.Session.client` for more details
+        method. Check :meth:`boto3.session.Session.client` for more details
         on accepted arguments.
     **kwargs
         Keyword arguments to be passed to the default session's client method.
-        Check :func:`boto3.session.Session.client` for more details on accepted
+        Check :meth:`boto3.session.Session.client` for more details on accepted
         arguments.
 
     Returns
@@ -444,11 +448,11 @@ def resource(
         already been initialized may evict existing resources. Default is None.
     *args
         Positional arguments to be passed to the default session's resource
-        method. Check :func:`boto3.session.Session.resource` for more details
+        method. Check :meth:`boto3.session.Session.resource` for more details
         on accepted arguments.
     **kwargs
         Keyword arguments to be passed to the default session's resource
-        method. Check :func:`boto3.session.Session.resource` for more details
+        method. Check :meth:`boto3.session.Session.resource` for more details
         on accepted arguments.
 
     Returns

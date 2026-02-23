@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.0](https://github.com/michaelthomasletts/boto3-client-cache/compare/v2.0.0...v2.1.0) (2026-02-23)
+
+
+### Features
+
+* Adding Session + client + resource + service_name normalization ([a3f1abd](https://github.com/michaelthomasletts/boto3-client-cache/commit/a3f1abdf1f883e51cdb9ffc13fba26f6ba834774))
+* Adding Session + client + resource + service_name normalization ([#26](https://github.com/michaelthomasletts/boto3-client-cache/issues/26)) ([81def8d](https://github.com/michaelthomasletts/boto3-client-cache/commit/81def8d87d04d0c3b7e99b070cc590bd7ff799e3))
+
 ## [2.0.0](https://github.com/michaelthomasletts/boto3-client-cache/compare/v1.0.1...v2.0.0) (2026-02-20)
 
 

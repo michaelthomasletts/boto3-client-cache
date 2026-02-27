@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.7](https://github.com/61418/boto3-client-cache/compare/v2.1.6...v2.1.7) (2026-02-27)
+
+
+### Bug Fixes
+
+* Updating maintainers in pyproject.toml ([ad0fb11](https://github.com/61418/boto3-client-cache/commit/ad0fb11fc48f9274d26c66ea4582c67a4ca001d4))
+* Updating maintainers in pyproject.toml ([#43](https://github.com/61418/boto3-client-cache/issues/43)) ([28adeaa](https://github.com/61418/boto3-client-cache/commit/28adeaa2790190f8a978c6d1275437c6db81d48b))
+
 ## [2.1.6](https://github.com/61418/boto3-client-cache/compare/v2.1.5...v2.1.6) (2026-02-27)
 
 

@@ -1,16 +1,16 @@
 [project]
 name = "boto3-client-cache"
 version = "2.1.5"
-description = "boto3-client-cache provides a concurrency-safe, bounded cache for boto3 clients with deterministic identity semantics."
+description = "A concurrency-safe, bounded cache for boto3 clients and resources with deterministic identity semantics."
 readme = "README.md"
 license = { text = "MPL-2.0" }
 requires-python = ">=3.10"
 dependencies = ["botocore", "boto3"]
 authors = [
-    {name = "Mike Letts",email = "general@61418.io"}
+    {name = "Mike Letts",email = "michael@61418.io"}
 ]
 maintainers = [
-  {name="Mike Letts", email="general@61418.io"},
+  {name="61418s", email="general@61418.io"},
 ]
 classifiers = [
   "Development Status :: 5 - Production/Stable",

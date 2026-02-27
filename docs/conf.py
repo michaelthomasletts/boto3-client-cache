@@ -56,6 +56,8 @@ html_theme_options = {
 # opengraph config
 ogp_site_url = html_baseurl
 ogp_image = "_static/og.png"
+ogp_description_length = 100
+ogp_description = "A concurrency-safe, bounded cache for boto3 clients and resources with deterministic identity semantics."
 
 # autosummary config
 autosummary_generate = True

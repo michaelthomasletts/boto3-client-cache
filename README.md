@@ -30,7 +30,7 @@
     />
   </a>
 
-  <a href="https://61418.io.com/boto3-client-cache">
+  <a href="https://61418.io/boto3-client-cache">
     <img 
       src="https://img.shields.io/badge/Official%20Documentation-📘-FF0000?style=flat&labelColor=555&logo=readthedocs" 
       alt="documentation"
@@ -50,13 +50,6 @@
       alt="license"
     />
   </a>
-
-<a href="https://github.com/sponsors/61418">
-  <img 
-    src="https://img.shields.io/badge/Sponsor%20this%20Project-💙-FF0000?style=flat&labelColor=555&logo=githubsponsors" 
-    alt="sponsorship"
-  />
-</a>
 
 </div>
 

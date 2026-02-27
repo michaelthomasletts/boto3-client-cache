@@ -7,10 +7,10 @@ license = { text = "MPL-2.0" }
 requires-python = ">=3.10"
 dependencies = ["botocore", "boto3"]
 authors = [
-    {name = "Mike Letts",email = "lettsmt@gmail.com"}
+    {name = "Mike Letts",email = "general@61418.io"}
 ]
 maintainers = [
-  {name="Mike Letts", email="lettsmt@gmail.com"},
+  {name="Mike Letts", email="general@61418.io"},
 ]
 classifiers = [
   "Development Status :: 5 - Production/Stable",

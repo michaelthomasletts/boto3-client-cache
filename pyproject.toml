@@ -10,7 +10,7 @@ authors = [
     {name = "Mike Letts",email = "michael@61418.io"}
 ]
 maintainers = [
-  {name="61418s", email="general@61418.io"},
+  {name="61418", email="general@61418.io"},
 ]
 classifiers = [
   "Development Status :: 5 - Production/Stable",

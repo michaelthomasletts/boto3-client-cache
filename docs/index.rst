@@ -3,7 +3,7 @@ boto3-client-cache
 
 **Version:** |release|
 
-**License:** `Mozilla Public License 2.0 <https://github.com/michaelthomasletts/boto3-client-cache/blob/main/LICENSE>`_
+**License:** `Mozilla Public License 2.0 <https://github.com/61418/boto3-client-cache/blob/main/LICENSE>`_
 
 **Author:** `Mike Letts <https://michaelthomasletts.com>`_
 

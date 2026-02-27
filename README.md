@@ -16,42 +16,42 @@
     />
   </a>
 
-  <a href="https://github.com/michaelthomasletts/boto3-client-cache/actions/workflows/push.yml">
+  <a href="https://github.com/61418/boto3-client-cache/actions/workflows/push.yml">
     <img 
-      src="https://img.shields.io/github/actions/workflow/status/michaelthomasletts/boto3-client-cache/push.yml?logo=github&color=%23FF0000FF&label=Build" 
+      src="https://img.shields.io/github/actions/workflow/status/61418/boto3-client-cache/push.yml?logo=github&color=%23FF0000FF&label=Build" 
       alt="workflow"
     />
   </a>
 
-  <a href="https://github.com/michaelthomasletts/boto3-client-cache/commits/main">
+  <a href="https://github.com/61418/boto3-client-cache/commits/main">
     <img 
-      src="https://img.shields.io/github/last-commit/michaelthomasletts/boto3-client-cache?logo=github&color=%23FF0000FF&label=Last%20Commit" 
+      src="https://img.shields.io/github/last-commit/61418/boto3-client-cache?logo=github&color=%23FF0000FF&label=Last%20Commit" 
       alt="last_commit"
     />
   </a>
 
-  <a href="https://michaelthomasletts.com/boto3-client-cache">
+  <a href="https://61418.io.com/boto3-client-cache">
     <img 
       src="https://img.shields.io/badge/Official%20Documentation-📘-FF0000?style=flat&labelColor=555&logo=readthedocs" 
       alt="documentation"
     />
   </a>
 
-  <a href="https://github.com/michaelthomasletts/boto3-client-cache">
+  <a href="https://github.com/61418/boto3-client-cache">
     <img 
       src="https://img.shields.io/badge/Source%20Code-💻-FF0000?style=flat&labelColor=555&logo=github" 
       alt="github"
     />
   </a>
 
-  <a href="https://github.com/michaelthomasletts/boto3-client-cache/blob/main/LICENSE">
+  <a href="https://github.com/61418/boto3-client-cache/blob/main/LICENSE">
     <img 
       src="https://img.shields.io/static/v1?label=License&message=Apache&color=FF0000&labelColor=555&logo=github&style=flat"
       alt="license"
     />
   </a>
 
-<a href="https://github.com/sponsors/michaelthomasletts">
+<a href="https://github.com/sponsors/61418">
   <img 
     src="https://img.shields.io/badge/Sponsor%20this%20Project-💙-FF0000?style=flat&labelColor=555&logo=githubsponsors" 
     alt="sponsorship"
@@ -162,11 +162,11 @@ cache[ClientCacheKey("s3")] = "this is not a boto3 client"
 
 ## License
 
-Beginning v2.1.3, boto3-client-cache is licensed under the [Mozilla Public License 2.0 (MPL-2.0)](https://github.com/michaelthomasletts/boto3-client-cache/blob/main/LICENSE). Earlier versions remain licensed under the Apache Software License 2.0.
+Beginning v2.1.3, boto3-client-cache is licensed under the [Mozilla Public License 2.0 (MPL-2.0)](https://github.com/61418/boto3-client-cache/blob/main/LICENSE). Earlier versions remain licensed under the Apache Software License 2.0.
 
 ## Contributing
 
-Refer to the [contributing guidelines](https://github.com/michaelthomasletts/boto3-client-cache?tab=contributing-ov-file) for additional information on how to contribute to boto3-client-cache.
+Refer to the [contributing guidelines](https://github.com/61418/boto3-client-cache?tab=contributing-ov-file) for additional information on how to contribute to boto3-client-cache.
 
 ## Special thanks
 

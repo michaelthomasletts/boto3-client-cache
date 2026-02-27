@@ -43,9 +43,9 @@ keywords = [
 ]
 
 [project.urls]
-Homepage = "https://michaelthomasletts.com/boto3-client-cache"
-Repository = "https://github.com/michaelthomasletts/boto3-client-cache"
-Documentation = "https://michaelthomasletts.com/boto3-client-cache"
+Homepage = "https://61418.io/boto3-client-cache"
+Repository = "https://github.com/61418/boto3-client-cache"
+Documentation = "https://61418.io/boto3-client-cache"
 
 [dependency-groups]
 dev = [

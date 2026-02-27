@@ -1,3 +1,7 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 """High-level API which provides a subclass of :class:`boto3.session.Session`
 that implements automatic caching for clients and resources. It also provides
 functions to set up the default session with caching capabilities.

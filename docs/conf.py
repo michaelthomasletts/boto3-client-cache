@@ -36,7 +36,7 @@ templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # html config
-html_logo = "logo.png"
+html_logo = "_static/favicon.ico"
 html_favicon = html_logo
 html_theme = "furo"
 html_static_path = ["_static"]
@@ -46,6 +46,7 @@ html_baseurl = str(pyproject["project"]["urls"]["Documentation"]).rstrip("/")  #
 repository_url = str(pyproject["project"]["urls"]["Repository"]).rstrip("/")  # type: ignore
 repository_branch = "main"
 repository_root = Path(__file__).resolve().parent.parent
+html_favicon = "_static/favicon.ico"
 
 html_theme_options = {
     "top_of_page_buttons": ["view"],
@@ -54,7 +55,7 @@ html_theme_options = {
 
 # opengraph config
 ogp_site_url = html_baseurl
-ogp_image = html_logo
+ogp_image = "_static/og.png"
 
 # autosummary config
 autosummary_generate = True

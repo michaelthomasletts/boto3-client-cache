@@ -1,6 +1,6 @@
 [project]
 name = "boto3-client-cache"
-version = "2.1.5"
+version = "2.1.6"
 description = "A concurrency-safe, bounded cache for boto3 clients and resources with deterministic identity semantics."
 readme = "README.md"
 license = { text = "MPL-2.0" }

@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.1.6](https://github.com/61418/boto3-client-cache/compare/v2.1.5...v2.1.6) (2026-02-27)
+
+
+### Bug Fixes
+
+* Add license declarations to module headers ([8cc8644](https://github.com/61418/boto3-client-cache/commit/8cc864419aebbadaebe9c63c8a43edcca61cb3a4))
+* Officiate GitHub repo transfer ([38eb10a](https://github.com/61418/boto3-client-cache/commit/38eb10aefea8f56cbb938f4b6b1b92b4c4e8b4af))
+* Remove sponsorship links ([fbf35b6](https://github.com/61418/boto3-client-cache/commit/fbf35b670eb977e3a6df5aea254e05a7d0f141ef))
+* Transfer ownership of boto3-client-cache to 61418 ([8bbe25e](https://github.com/61418/boto3-client-cache/commit/8bbe25e179206ebac626523d25dbf3a889e2f12a))
+* Update package metadata for transfer to 61418 ([355ff36](https://github.com/61418/boto3-client-cache/commit/355ff36cf88f01f2bf8e6183c07a95abd9e71b61))
+* Update package metadata for transfer to 61418 ([#40](https://github.com/61418/boto3-client-cache/issues/40)) ([01591c3](https://github.com/61418/boto3-client-cache/commit/01591c39086c6a5a692bed52cf098f5bb6f621d6))
+
 ## [2.1.5](https://github.com/michaelthomasletts/boto3-client-cache/compare/v2.1.4...v2.1.5) (2026-02-23)
 
 

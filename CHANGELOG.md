@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.8](https://github.com/61418/boto3-client-cache/compare/v2.1.7...v2.1.8) (2026-02-28)
+
+
+### Bug Fixes
+
+* Updating Shields badge colors ([be7dc3a](https://github.com/61418/boto3-client-cache/commit/be7dc3a01021e3efe086da45caf4bc2b2df8b99a))
+* Updating Shields badge colors ([#45](https://github.com/61418/boto3-client-cache/issues/45)) ([63a2233](https://github.com/61418/boto3-client-cache/commit/63a223351933ddcec2d80a187a241b5fdf30b9c6))
+
 ## [2.1.7](https://github.com/61418/boto3-client-cache/compare/v2.1.6...v2.1.7) (2026-02-27)
 
 
